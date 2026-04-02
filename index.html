@@ -534,60 +534,68 @@ return { counts, overBurnt, freeCap, overloaded, available, teamUtil, totalAlloc
 }
 
 function renderDecision({ counts, overBurnt, freeCap, available, teamUtil }) {
-  const parts = [];
+  let html = `
+    <div><span class="hi-amber"><b>Team is at ${teamUtil}% utilization</b></span></div>
+    <div style="margin-top:6px;">
+  `;
 
-  // TEAM UTILIZATION CONTEXT
-  parts.push(`<span class="hi-amber">Team is at ${teamUtil}% utilization</span>.`);
-
-  // IDLE (keep descriptive insight)
+  // IDLE
   if (counts.idle > 0) {
-    parts.push(
-  `<span class="hi-red">${counts.idle} member${counts.idle > 1 ? 's have' : ' is'} idle</span> — needs immediate assignment or redeployment.`
-);
+    html += `
+      • <span class="hi-red">${counts.idle} member${counts.idle > 1 ? 's are' : ' is'} idle</span> — needs immediate assignment<br>
+    `;
   }
 
-  // OVERLOAD (mix of insight + decision)
+  // OVERLOAD
   if (counts.overloaded > 0) {
-    const canAbsorb = Math.min(overBurnt, freeCap);
+    html += `
+      • <span class="hi-red">${counts.overloaded} member${counts.overloaded > 1 ? 's are' : ' is'} overloaded</span> — ${overBurnt}h excess<br>
+    `;
 
-    if (canAbsorb > 0) {
-      parts.push(
-        `<span class="hi-red">${counts.overloaded} member${counts.overloaded > 1 ? 's are' : ' is'} over capacity by ${overBurnt}h total</span>, while 
-         <span class="hi-green">${available.length} member${available.length !== 1 ? 's have' : ' has'} ${freeCap}h free capacity</span>. 
-         → <span class="hi-green">Redistribute work — no hiring needed.</span>`
-      );
-    } else {
-      parts.push(
-        `<span class="hi-red">${counts.overloaded} member${counts.overloaded > 1 ? 's are' : ' is'} over capacity by ${overBurnt}h</span> 
-         with no available bandwidth. → <span class="hi-red">Consider hiring or reducing scope.</span>`
-      );
+    if (freeCap > 0) {
+      html += `
+        • <span class="hi-green">${available.length} member${available.length !== 1 ? 's have' : ' has'} ${freeCap}h free capacity</span><br>
+      `;
     }
   }
 
-  // UNDERUTILIZED (keep original style)
+  // UNDERUTILIZED
   if (counts.overloaded === 0 && counts.underused > 0) {
-    parts.push(
-      `<span class="hi-amber">${counts.underused} members are below 70% utilization</span> — pull backlog work forward.`
-    );
+    html += `
+      • <span class="hi-amber">${counts.underused} members underutilized</span> — pull backlog work<br>
+    `;
   }
+
+  html += `</div>`;
+
+  // FINAL DECISION LINE
+  let decisionLine = '';
+
+  if (counts.overloaded > 0) {
+    if (freeCap > 0) {
+      decisionLine = `<span class="hi-green">→ Redistribute work — no hiring needed</span>`;
+    } else {
+      decisionLine = `<span class="hi-red">→ Consider hiring or reducing scope</span>`;
+    }
+  }
+
+  // FLEXIBLE TASK INSIGHT
   const flexibleOverloaded = team.filter(
-  p => classify(p.allocated) === 'overloaded' && p.taskType === 'flexible'
-).length;
+    p => classify(p.allocated) === 'overloaded' && p.taskType === 'flexible'
+  ).length;
 
-if (flexibleOverloaded > 0) {
-  parts.push(
-    `<span class="hi-green">${flexibleOverloaded} overloaded members are working on flexible tasks</span> — prioritize redistributing these first.`
-  );
-}
-
-  // PERFECT CASE
-  if (parts.length === 1) {
-    parts.push(`Team is balanced. No immediate action required.`);
+  if (flexibleOverloaded > 0) {
+    decisionLine += `<br><span class="hi-green">${flexibleOverloaded} overloaded members are on flexible tasks — shift these first</span>`;
   }
 
-  document.getElementById('decisionText').innerHTML = parts.join(' ');
-}
+  if (!decisionLine) {
+    decisionLine = `Team is balanced. No immediate action required.`;
+  }
 
+  html += `<div style="margin-top:8px; font-weight:500;">${decisionLine}</div>`;
+
+  document.getElementById('decisionText').innerHTML = html;
+}
 function renderRebalance({ overloaded, available }) {
   const rows = Math.max(overloaded.length, available.length);
   let leftHTML = '', rightHTML = '', arrowHTML = '';
