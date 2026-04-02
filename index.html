@@ -542,7 +542,7 @@ function renderDecision({ counts, overBurnt, freeCap, available, teamUtil }) {
   // IDLE (keep descriptive insight)
   if (counts.idle > 0) {
     parts.push(
-  `<span class="hi-red">${counts.idle} member${counts.idle > 1 ? 's have' : ' has'} zero allocation</span> — needs immediate assignment or redeployment.`
+  `<span class="hi-red">${counts.idle} member${counts.idle > 1 ? 's have' : ' is'} idle</span> — needs immediate assignment or redeployment.`
 );
   }
 
