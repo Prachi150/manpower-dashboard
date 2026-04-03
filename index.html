@@ -24,6 +24,9 @@
   --green: #1a7a4a;
   --green-bg: #f0faf4;
   --green-border: #b8e4cc;
+  --blue: #1a5fa0;
+  --blue-bg: #f0f5fc;
+  --blue-border: #b8d0ec;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,7 +46,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--border);
 }
@@ -52,243 +55,231 @@ header {
 h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; }
 .header-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); text-align: right; line-height: 1.8; }
 
-/* ── DECISION BANNER ── */
+/* 1. SPRINT RISK */
+.sprint-risk {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 18px;
+  margin-bottom: 14px;
+  border: 1px solid;
+  border-radius: 2px;
+  font-size: 13px;
+}
+.sprint-risk.high   { background: var(--red-bg);   border-color: var(--red-border);   color: var(--red); }
+.sprint-risk.medium { background: var(--amber-bg);  border-color: var(--amber-border); color: var(--amber); }
+.sprint-risk.low    { background: var(--green-bg);  border-color: var(--green-border); color: var(--green); }
+
+.sr-left { display: flex; align-items: center; gap: 10px; }
+.sr-dot  { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.high .sr-dot   { background: var(--red); }
+.medium .sr-dot { background: var(--amber); }
+.low .sr-dot    { background: var(--green); }
+
+.sr-tag  { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.75; }
+.sr-msg  { font-size: 13px; font-weight: 500; margin-top: 1px; }
+.sr-sub  { font-family: 'DM Mono', monospace; font-size: 11px; opacity: 0.8; }
+
+/* DECISION BANNER */
 .decision-banner {
   background: var(--surface);
   border: 1px solid var(--border);
   border-top: 3px solid var(--text);
-  padding: 22px 26px;
-  margin-bottom: 20px;
+  padding: 20px 24px;
+  margin-bottom: 14px;
 }
 
 .decision-label {
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text3);
-  margin-bottom: 10px;
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--text3); margin-bottom: 10px;
 }
 
-.decision-sentence { font-size: 15px; font-weight: 400; color: var(--text); line-height: 1.7; }
-.decision-sentence .hi-red   { font-weight: 600; color: var(--red); }
-.decision-sentence .hi-green { font-weight: 600; color: var(--green); }
-.decision-sentence .hi-amber { font-weight: 600; color: var(--amber); }
+.decision-sentence { font-size: 15px; color: var(--text); line-height: 1.7; }
+.hi-red   { font-weight: 600; color: var(--red); }
+.hi-green { font-weight: 600; color: var(--green); }
+.hi-amber { font-weight: 600; color: var(--amber); }
+
 
 .decision-meta {
-  margin-top: 12px;
-  padding-top: 12px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid var(--border);
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   color: var(--text3);
 }
 
-/* ── REBALANCE ── */
+/* 3. SIMULATE BUTTON */
+.simulate-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.sim-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.sim-btn:hover { opacity: 0.85; }
+.sim-btn.on { background: var(--green); border-color: var(--green); }
+
+.sim-desc {
+  font-size: 12px;
+  color: var(--text3);
+  font-family: 'DM Mono', monospace;
+  line-height: 1.5;
+}
+
+.sim-badge {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  padding: 2px 6px;
+  background: var(--blue-bg);
+  color: var(--blue);
+  border: 1px solid var(--blue-border);
+  border-radius: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* SECTION HEAD */
 .section-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
+.section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text3); }
 
-.section-title {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--text3);
-}
-
+/* REBALANCE */
 .rebalance-grid {
   display: grid;
   grid-template-columns: 1fr 48px 1fr;
   background: var(--surface);
   border: 1px solid var(--border);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
-.rb-head {
-  padding: 9px 18px;
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border);
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  color: var(--text3);
-}
-
-.rb-head.mid {
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  text-align: center;
-}
+.rb-head { padding: 9px 18px; background: var(--surface2); border-bottom: 1px solid var(--border); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text3); }
+.rb-head.mid { border-left: 1px solid var(--border); border-right: 1px solid var(--border); text-align: center; }
 
 .rb-person {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 18px;
-  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 18px; border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
 }
-
 .rb-person:last-child { border-bottom: none; }
 .rb-person.empty { background: var(--surface2); min-height: 62px; }
+.rb-person.sim-balanced { background: var(--green-bg); }
 
 .rb-name { font-size: 13px; font-weight: 500; }
 .rb-role { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; margin-top: 1px; }
 
 .rb-hrs { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; text-align: right; }
 .rb-hrs .sub { display: block; font-size: 10px; font-weight: 400; color: var(--text3); margin-top: 1px; }
-.rb-hrs.over { color: var(--red); }
-.rb-hrs.free { color: var(--green); }
+.rb-hrs.over     { color: var(--red); }
+.rb-hrs.free     { color: var(--green); }
+.rb-hrs.balanced { color: var(--green); }
 
-.rb-mini-bar { height: 3px; margin-top: 5px; border-radius: 1px; }
+.rb-mini-bar { height: 3px; margin-top: 5px; border-radius: 1px; transition: width 0.6s ease, background 0.3s; }
 .rb-mini-bar.over { background: var(--red); }
 .rb-mini-bar.free { background: var(--green); }
 
-.rb-flexible-tag {
-  display: inline-block;
-  margin-top: 3px;
-  font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  padding: 1px 5px;
-  border-radius: 2px;
-  background: var(--green-bg);
-  color: var(--green);
-  border: 1px solid var(--green-border);
+.flex-tag {
+  display: inline-block; margin-top: 3px;
+  font-family: 'DM Mono', monospace; font-size: 9px; padding: 1px 5px;
+  border-radius: 2px; background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border);
 }
 
-.rb-arrow-col {
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-}
-
+.rb-arrow-col { border-left: 1px solid var(--border); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
 .rb-arrow {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--border);
-  color: var(--border2);
-  font-size: 16px;
-  min-height: 62px;
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border); color: var(--border2); font-size: 16px;
+  min-height: 62px; transition: color 0.3s;
 }
-
 .rb-arrow:last-child { border-bottom: none; }
+.rb-arrow.active { color: var(--green); }
 
-/* ── SITUATION STRIP ── */
+/* SITUATION STRIP */
 .situation-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-bottom: 20px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 14px;
 }
-
 .sit-tile { background: var(--surface); padding: 16px 18px; }
 .sit-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.7px; color: var(--text3); margin-bottom: 6px; }
-.sit-value { font-size: 26px; font-weight: 300; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+.sit-value { font-size: 26px; font-weight: 300; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; transition: color 0.4s; }
 .sit-value.red   { color: var(--red); }
 .sit-value.amber { color: var(--amber); }
 .sit-value.green { color: var(--green); }
 .sit-sub { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
 
-/* ── TABLE ── */
-/* FIX 5: Legend sits just above the table */
-.table-legend {
+/* 4. CAVEAT NOTE */
+.caveat-note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border2);
+  padding: 10px 16px;
+  margin-bottom: 20px;
   display: flex;
-  gap: 16px;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
 }
+.caveat-icon { font-size: 14px; color: var(--text3); flex-shrink: 0; margin-top: 1px; }
+.caveat-text { font-size: 12px; color: var(--text3); line-height: 1.5; font-family: 'DM Mono', monospace; }
+.caveat-text strong { color: var(--text2); font-weight: 500; }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: var(--text3);
-  font-family: 'DM Mono', monospace;
-}
-
-.legend-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+/* TABLE */
+.table-legend { display: flex; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
 .table-wrap { background: var(--surface); border: 1px solid var(--border); }
 
 .table-head-row {
-  display: grid;
-  grid-template-columns: 185px 100px 58px 1fr 78px 118px;
-  padding: 9px 18px;
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border);
-  gap: 14px;
+  display: grid; grid-template-columns: 185px 100px 58px 1fr 78px 118px;
+  padding: 9px 18px; background: var(--surface2); border-bottom: 1px solid var(--border); gap: 14px;
 }
-
 .th { font-size: 11px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px; }
 
 .t-row {
-  display: grid;
-  grid-template-columns: 185px 100px 58px 1fr 78px 118px;
-  padding: 11px 18px;
-  border-bottom: 1px solid var(--border);
-  align-items: center;
-  gap: 14px;
-  border-left: 3px solid transparent;
-  transition: background 0.1s;
+  display: grid; grid-template-columns: 185px 100px 58px 1fr 78px 118px;
+  padding: 11px 18px; border-bottom: 1px solid var(--border);
+  align-items: center; gap: 14px; border-left: 3px solid transparent; transition: background 0.2s;
 }
-
 .t-row:last-child { border-bottom: none; }
 .t-row:hover { background: var(--surface2); }
 .t-row.overloaded { border-left-color: var(--red); }
 .t-row.healthy    { border-left-color: var(--green); }
 .t-row.underused  { border-left-color: var(--amber); }
 .t-row.idle       { border-left-color: var(--border2); }
+.t-row.sim-healthy { background: var(--green-bg); border-left-color: var(--green); }
 
 .p-name { font-size: 13px; font-weight: 500; }
 .p-role { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; margin-top: 2px; display: flex; align-items: center; gap: 6px; }
 
 .t-hrs { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text2); }
 
-.t-pct { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; }
+.t-pct { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; transition: color 0.4s; }
 .t-pct.overloaded { color: var(--red); }
 .t-pct.healthy    { color: var(--green); }
 .t-pct.underused  { color: var(--amber); }
 .t-pct.idle       { color: var(--text3); }
 
-.bar-track {
-  height: 5px;
-  background: var(--bg);
-  border-radius: 1px;
-  overflow: hidden;
-  position: relative;
-}
-
-.bar-track::after {
-  content: '';
-  position: absolute;
-  left: 66.6%;
-  top: -2px; bottom: -2px;
-  width: 1px;
-  background: var(--border2);
-}
-
-.bar-fill {
-  height: 100%;
-  width: 0;
-  border-radius: 1px;
-  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
-}
-
+.bar-track { height: 5px; background: var(--bg); border-radius: 1px; overflow: hidden; position: relative; }
+.bar-track::after { content: ''; position: absolute; left: 66.6%; top: -2px; bottom: -2px; width: 1px; background: var(--border2); }
+.bar-fill { height: 100%; width: 0; border-radius: 1px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1), background 0.4s; }
 .bar-fill.overloaded { background: var(--red); }
 .bar-fill.healthy    { background: var(--green); }
 .bar-fill.underused  { background: var(--amber); }
@@ -299,58 +290,32 @@ h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; }
 .t-delta.free  { color: var(--text3); }
 .t-delta.exact { color: var(--green); }
 
-.badge {
-  font-size: 10px; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 0.7px; padding: 3px 7px; border-radius: 2px;
-  display: inline-block; white-space: nowrap;
-}
-
+.badge { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.7px; padding: 3px 7px; border-radius: 2px; display: inline-block; white-space: nowrap; }
 .badge.overloaded { background: var(--red-bg);   color: var(--red);   border: 1px solid var(--red-border); }
 .badge.healthy    { background: var(--green-bg);  color: var(--green); border: 1px solid var(--green-border); }
 .badge.underused  { background: var(--amber-bg);  color: var(--amber); border: 1px solid var(--amber-border); }
 .badge.idle       { background: var(--surface2);  color: var(--text3); border: 1px solid var(--border); }
 
-.task-tag {
-  font-size: 9px;
-  padding: 1px 5px;
-  border-radius: 2px;
-  font-family: 'DM Mono', monospace;
-  font-weight: 500;
-}
-
+.task-tag { font-size: 9px; padding: 1px 5px; border-radius: 2px; font-family: 'DM Mono', monospace; font-weight: 500; }
 .task-tag.flexible { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
 .task-tag.critical { background: var(--red-bg);   color: var(--red);   border: 1px solid var(--red-border); }
 
 .sort-controls { display: flex; gap: 2px; }
-
-.sort-btn {
-  font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 10px;
-  border: 1px solid var(--border); background: var(--surface); color: var(--text3);
-  cursor: pointer; transition: all 0.1s;
-}
-
+.sort-btn { font-family: 'DM Mono', monospace; font-size: 11px; padding: 4px 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text3); cursor: pointer; transition: all 0.1s; }
 .sort-btn:hover { color: var(--text); border-color: var(--border2); }
 .sort-btn.active { background: var(--text); color: white; border-color: var(--text); }
 
-footer {
-  padding-top: 20px;
-  margin-top: 28px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-}
-
+footer { padding-top: 20px; margin-top: 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
 .footer-note { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.decision-banner  { animation: fadeIn 0.3s ease both; }
-.rebalance-wrap   { animation: fadeIn 0.3s 0.06s ease both; }
-.situation-strip  { animation: fadeIn 0.3s 0.12s ease both; }
-.breakdown-wrap   { animation: fadeIn 0.3s 0.18s ease both; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.sprint-risk     { animation: fadeIn 0.3s ease both; }
+.decision-banner { animation: fadeIn 0.3s 0.05s ease both; }
+.simulate-row    { animation: fadeIn 0.3s 0.08s ease both; }
+.rebalance-wrap  { animation: fadeIn 0.3s 0.11s ease both; }
+.situation-strip { animation: fadeIn 0.3s 0.14s ease both; }
+.caveat-note     { animation: fadeIn 0.3s 0.16s ease both; }
+.breakdown-wrap  { animation: fadeIn 0.3s 0.18s ease both; }
 </style>
 </head>
 <body>
@@ -367,19 +332,36 @@ footer {
     </div>
   </header>
 
-  <!-- FIX 2: Single merged decision banner -->
+  <!-- 1. SPRINT RISK INDICATOR -->
+  <div class="sprint-risk" id="sprintRisk">
+    <div class="sr-left">
+      <div class="sr-dot"></div>
+      <div>
+        <div class="sr-tag">Sprint Delivery Risk</div>
+        <div class="sr-msg" id="srMsg">—</div>
+      </div>
+    </div>
+    <div class="sr-sub" id="srSub">—</div>
+  </div>
+
+  <!-- DECISION BANNER -->
   <div class="decision-banner">
     <div class="decision-label">What needs to happen this week</div>
     <div class="decision-sentence" id="decisionText">—</div>
-    <!-- Team summary folded in here as a subtle footer line -->
     <div class="decision-meta" id="teamMeta">—</div>
   </div>
 
-  <!-- REBALANCE -->
+  <!-- 3. SIMULATE REBALANCE -->
+  <div class="simulate-row">
+    <button class="sim-btn" id="simBtn" onclick="toggleSim()">Simulate Rebalance</button>
+    <div class="sim-desc" id="simDesc">See what utilization looks like if all flexible tasks are redistributed from overloaded members</div>
+  </div>
+
+  <!-- REBALANCE PANEL -->
   <div class="rebalance-wrap">
     <div class="section-head">
       <div class="section-title">Rebalancing Opportunity</div>
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);">Move hours from overloaded → available · Role compatibility assumed</div>
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);">Move hours from overloaded to available · Role compatibility assumed</div>
     </div>
     <div class="rebalance-grid">
       <div class="rb-head">Overloaded — needs to offload</div>
@@ -415,6 +397,14 @@ footer {
     </div>
   </div>
 
+  <!-- 4. CAVEAT NOTE -->
+  <div class="caveat-note">
+    <div class="caveat-icon">&#9432;</div>
+    <div class="caveat-text">
+      <strong>Limitations to note:</strong> Role compatibility is assumed, not enforced. Verify that suggested absorbers can actually take on the work before reassigning. Allocated hours reflect assignments, not logged time.
+    </div>
+  </div>
+
   <!-- TABLE -->
   <div class="breakdown-wrap">
     <div class="section-head">
@@ -426,17 +416,16 @@ footer {
       </div>
     </div>
 
-    <!-- FIX 5: Legend above the table, not in the footer -->
     <div class="table-legend">
       <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Overloaded (&gt;100%)</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Healthy (70–100%)</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div> Under-utilized (&lt;70%)</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--border2)"></div> Idle (0%)</div>
-      <div class="legend-item" style="margin-left:8px;padding-left:8px;border-left:1px solid var(--border)">
-        <span class="task-tag flexible">Flexible</span> task can be reassigned
+      <div class="legend-item" style="margin-left:8px;padding-left:8px;border-left:1px solid var(--border);">
+        <span class="task-tag flexible">Flexible</span>&nbsp;can be reassigned
       </div>
       <div class="legend-item">
-        <span class="task-tag critical">Priority</span> task should not be moved
+        <span class="task-tag critical">Priority</span>&nbsp;should not be moved
       </div>
     </div>
 
@@ -454,12 +443,11 @@ footer {
   </div>
 
   <footer>
-    <div class="footer-note">Mock data · Utilization = Allocated ÷ 40 × 100 · Bar marker = 100%</div>
+    <div class="footer-note">Mock data · Utilization = Allocated hrs / 40 x 100 · Bar marker = 100%</div>
     <div class="footer-note">Faclon Labs · Internal Use Only</div>
   </footer>
 
 </div>
-
 <script>
 const CAP = 40;
 
@@ -478,23 +466,55 @@ const team = [
   { name: "Kashish Tripathi", role: "ML Engineer",        allocated: 0,  taskType: "flexible"  },
 ];
 
-// FIX 4: "severe" removed — folded back into "underused" so nothing breaks
-function classify(a) {
+const classify = (a) => {
   const p = a / CAP * 100;
-  if (p === 0)   return 'idle';
-  if (p > 100)   return 'overloaded';
-  if (p >= 70)   return 'healthy';
+  if (p === 0)  return 'idle';
+  if (p > 100)  return 'overloaded';
+  if (p >= 70)  return 'healthy';
   return 'underused';
-}
+};
 
 const pct = a => Math.round(a / CAP * 100);
 
-function compute() {
+let simMode = false;
+
+// Build a simulated version of the team where flexible overloaded hours
+// are redistributed into available members (most free capacity first)
+function buildSimTeam() {
+  // Deep copy
+  const sim = team.map(p => ({ ...p }));
+
+  // Collect excess hours from flexible overloaded people
+  let hoursPool = 0;
+  sim.forEach(p => {
+    if (classify(p.allocated) === 'overloaded' && p.taskType === 'flexible') {
+      hoursPool += p.allocated - CAP;
+      p.allocated = CAP; // cap them at 100%
+    }
+  });
+
+  // Distribute into absorbers (most free first = lowest allocated first)
+  const absorbers = sim
+    .filter(p => classify(p.allocated) !== 'overloaded')
+    .sort((a, b) => a.allocated - b.allocated);
+
+  for (const p of absorbers) {
+    if (hoursPool <= 0) break;
+    const canTake = CAP - p.allocated;
+    const taking  = Math.min(canTake, hoursPool);
+    p.allocated  += taking;
+    hoursPool    -= taking;
+  }
+
+  return sim;
+}
+
+function computeFrom(data) {
   const counts = { overloaded:0, healthy:0, underused:0, idle:0 };
   let overBurnt = 0, freeCap = 0, totalAllocated = 0;
-  const totalCapacity = team.length * CAP;
+  const totalCapacity = data.length * CAP;
 
-  team.forEach(p => {
+  data.forEach(p => {
     const s = classify(p.allocated);
     counts[s]++;
     totalAllocated += p.allocated;
@@ -502,54 +522,95 @@ function compute() {
     else freeCap += CAP - p.allocated;
   });
 
-  const overloaded = team.filter(p => classify(p.allocated) === 'overloaded').sort((a,b) => b.allocated - a.allocated);
-  const available  = team.filter(p => ['underused','idle'].includes(classify(p.allocated))).sort((a,b) => a.allocated - b.allocated);
-  const teamUtil   = Math.round((totalAllocated / totalCapacity) * 100);
-  const net        = totalAllocated - totalCapacity;
+  const overloaded     = data.filter(p => classify(p.allocated) === 'overloaded').sort((a,b) => b.allocated - a.allocated);
+  const available      = data.filter(p => ['underused','idle'].includes(classify(p.allocated))).sort((a,b) => a.allocated - b.allocated);
+  const teamUtil       = Math.round((totalAllocated / totalCapacity) * 100);
+  const net            = totalAllocated - totalCapacity;
+  const overloadedCount = counts.overloaded;
+  const flexOverloaded  = overloaded.filter(p => p.taskType === 'flexible');
+  const extraHours      = overBurnt;
 
-  return { counts, overBurnt, freeCap, overloaded, available, teamUtil, totalAllocated, totalCapacity, net };
+  return { counts, overBurnt, freeCap, overloaded, available, teamUtil, totalAllocated, totalCapacity, net, overloadedCount, flexOverloaded, extraHours, members: data };
 }
 
-// FIX 2 + FIX 3: Single banner, flexible insight leads the action lines
-function renderDecision({ counts, overBurnt, freeCap, available, teamUtil, totalAllocated, totalCapacity, net }) {
+function compute() {
+  return computeFrom(team);
+}
+
+function computeSim() {
+  return computeFrom(buildSimTeam());
+}
+
+// Returns the right data set depending on sim mode
+function activeData() {
+  return simMode ? computeSim() : compute();
+}
+
+// 1. SPRINT RISK
+function renderSprintRisk({ overloadedCount, counts, extraHours }) {
+  const el  = document.getElementById('sprintRisk');
+  const msg = document.getElementById('srMsg');
+  const sub = document.getElementById('srSub');
+
+  if (simMode) {
+    el.className    = 'sprint-risk low';
+    msg.textContent = 'Simulated: No delivery risk after rebalancing.';
+    sub.textContent = 'All members at or below 100% after redistribution';
+    return;
+  }
+
+  if (overloadedCount >= 3 || counts.idle > 0) {
+    el.className    = 'sprint-risk high';
+    msg.textContent = `${overloadedCount} sprint members over capacity — delivery is at risk this week.`;
+    sub.textContent = `${extraHours}h of unplanned overtime across the team`;
+  } else if (overloadedCount > 0) {
+    el.className    = 'sprint-risk medium';
+    msg.textContent = `${overloadedCount} member over capacity — monitor closely.`;
+    sub.textContent = `${extraHours}h excess load this week`;
+  } else {
+    el.className    = 'sprint-risk low';
+    msg.textContent = 'No delivery risk detected. Team is within healthy capacity.';
+    sub.textContent = 'All sprint members at or below 100%';
+  }
+}
+
+// DECISION BANNER
+function renderDecision({ counts, overBurnt, freeCap, available, teamUtil, totalAllocated, totalCapacity, net, flexOverloaded, overloaded }) {
   let lines = [];
 
-  // FIX 3: Flexible task insight is now the FIRST action line if relevant
-  const flexibleOverloaded = team.filter(
-    p => classify(p.allocated) === 'overloaded' && p.taskType === 'flexible'
-  );
-  if (flexibleOverloaded.length > 0) {
-    const names = flexibleOverloaded.map(p => p.name.split(' ')[0]).join(', ');
-    lines.push(`<span class="hi-green">Start here: ${names} ${flexibleOverloaded.length > 1 ? 'are' : 'is'} overloaded on flexible tasks — shift these first before any other redistribution.</span>`);
-  }
-
-  // Idle members
-  if (counts.idle > 0) {
-    const names = team.filter(p => classify(p.allocated) === 'idle').map(p => p.name.split(' ')[0]).join(', ');
-    lines.push(`<span class="hi-red">${names} ${counts.idle > 1 ? 'have' : 'has'} zero allocation</span> — assign work or flag for redeployment immediately.`);
-  }
-
-  // Overload summary + what to do
-  if (counts.overloaded > 0) {
-    if (freeCap > 0) {
-      lines.push(`<span class="hi-red">${counts.overloaded} member${counts.overloaded > 1 ? 's are' : ' is'} over capacity by ${overBurnt}h total.</span> Team has ${freeCap}h of free capacity — <span class="hi-green">redistribution can solve this without hiring.</span>`);
-    } else {
-      lines.push(`<span class="hi-red">${counts.overloaded} member${counts.overloaded > 1 ? 's are' : ' is'} over capacity by ${overBurnt}h</span> and there is not enough slack to absorb it. Consider deferring tasks or adjusting scope.`);
+  if (simMode) {
+    lines.push(`<span class="hi-green">Simulated rebalance applied.</span> Flexible tasks have been redistributed from overloaded members. All members are now at or below capacity.`);
+    if (counts.idle === 0 && counts.overloaded === 0) {
+      lines.push(`Kashish Tripathi and Pranjal Sharma have absorbed the redistributed work. Verify role compatibility before actioning this plan.`);
     }
-  }
+  } else {
+    const flexNames = flexOverloaded.map(p => p.name.split(' ')[0]).join(', ');
+    if (flexOverloaded.length > 0) {
+      lines.push(`<span class="hi-green">Start here: ${flexNames} ${flexOverloaded.length > 1 ? 'are' : 'is'} overloaded on flexible tasks — shift these first before any other redistribution.</span>`);
+    }
 
-  // No overload but underused
-  if (counts.overloaded === 0 && counts.idle === 0 && counts.underused > 0) {
-    lines.push(`No one is overloaded. <span class="hi-amber">${counts.underused} members are below 70% utilization</span> — consider pulling backlog items forward.`);
-  }
+    if (counts.idle > 0) {
+      const names = team.filter(p => classify(p.allocated) === 'idle').map(p => p.name.split(' ')[0]).join(', ');
+      lines.push(`<span class="hi-red">${names} ${counts.idle > 1 ? 'have' : 'has'} zero allocation</span> — assign work or flag for redeployment immediately.`);
+    }
 
-  if (lines.length === 0) {
-    lines.push('Team is balanced. No immediate action required — monitor for drift next sprint.');
+    if (counts.overloaded > 0) {
+      if (freeCap > 0) {
+        lines.push(`<span class="hi-red">${counts.overloaded} member${counts.overloaded > 1 ? 's are' : ' is'} over capacity by ${overBurnt}h total.</span> Team has ${freeCap}h of free capacity — <span class="hi-green">redistribution can solve this without hiring.</span>`);
+      } else {
+        lines.push(`<span class="hi-red">${counts.overloaded} member${counts.overloaded > 1 ? 's are' : ' is'} over capacity by ${overBurnt}h</span> and there is not enough slack to absorb it. Consider deferring tasks or adjusting scope.`);
+      }
+    }
+
+    if (counts.overloaded === 0 && counts.idle === 0 && counts.underused > 0) {
+      lines.push(`No one is overloaded. <span class="hi-amber">${counts.underused} members are below 70% utilization</span> — consider pulling backlog items forward.`);
+    }
+
+    if (lines.length === 0) lines.push('Team is balanced. No immediate action required.');
   }
 
   document.getElementById('decisionText').innerHTML = lines.join('<br>');
 
-  // FIX 2: Team summary folded as a subtle meta line inside the same banner
   const netText = net > 0
     ? `<span style="color:var(--red)">+${net}h overload</span>`
     : net < 0
@@ -557,75 +618,98 @@ function renderDecision({ counts, overBurnt, freeCap, available, teamUtil, total
       : `<span style="color:var(--green)">Balanced</span>`;
 
   document.getElementById('teamMeta').innerHTML =
-    `Total allocated: <strong>${totalAllocated}h</strong> · Team capacity: <strong>${totalCapacity}h</strong> · Utilization: <strong>${teamUtil}%</strong> · Net: ${netText}`;
+    `Total allocated: <strong>${totalAllocated}h</strong> · Team capacity: <strong>${totalCapacity}h</strong> · Utilization: <strong>${teamUtil}%</strong> · Net: ${netText}${simMode ? ' <span style="color:var(--green);font-style:italic;">(simulated)</span>' : ''}`;
 }
 
 function renderRebalance({ overloaded, available }) {
   const rows = Math.max(overloaded.length, available.length);
-  let leftHTML = '', rightHTML = '', arrowHTML = '';
+  let lH = '', rH = '', aH = '';
 
-  for (let i = 0; i < rows; i++) {
-    if (overloaded[i]) {
-      const p = overloaded[i];
+  // Use real team for left col always (shows original overloaded)
+  const realOverloaded = team.filter(p => classify(p.allocated) === 'overloaded').sort((a,b) => b.allocated - a.allocated);
+  // Use sim absorbers for right col when in sim mode
+  const simTeam    = buildSimTeam();
+  const simAbsorbers = simMode
+    ? simTeam.filter(p => {
+        const orig = team.find(t => t.name === p.name);
+        return p.allocated > orig.allocated; // absorbed some hours
+      }).sort((a,b) => b.allocated - a.allocated)
+    : available;
+
+  const leftList  = realOverloaded;
+  const rightList = simAbsorbers.length > 0 ? simAbsorbers : available;
+  const maxRows   = Math.max(leftList.length, rightList.length);
+
+  for (let i = 0; i < maxRows; i++) {
+    if (leftList[i]) {
+      const p     = leftList[i];
       const excess = p.allocated - CAP;
-      const bw = Math.min((excess / 25) * 100, 100);
-      // FIX 3: Show flexible tag on overloaded person in rebalance panel too
-      const flexTag = p.taskType === 'flexible'
-        ? `<span class="rb-flexible-tag">Flexible — shift first</span>`
-        : '';
-      leftHTML += `
-        <div class="rb-person">
-          <div>
-            <div class="rb-name">${p.name}</div>
-            <div class="rb-role">${p.role}</div>
-            ${flexTag}
-            <div class="rb-mini-bar over" style="width:${bw}%"></div>
-          </div>
-          <div class="rb-hrs over">+${excess}h<span class="sub">over limit</span></div>
-        </div>`;
+      const bw    = Math.min((excess / 25) * 100, 100);
+      const flexTag = p.taskType === 'flexible' ? `<span class="flex-tag">Flexible — shift first</span>` : '';
+      const isShifted = simMode && p.taskType === 'flexible';
+      lH += `<div class="rb-person${isShifted ? ' sim-balanced' : ''}">
+        <div>
+          <div class="rb-name">${p.name}</div>
+          <div class="rb-role">${p.role}</div>
+          ${flexTag}
+          <div class="rb-mini-bar over" style="width:${isShifted ? '0' : bw}%"></div>
+        </div>
+        <div class="rb-hrs ${isShifted ? 'balanced' : 'over'}">
+          ${isShifted ? 'Redistributed' : '+'+excess+'h'}
+          <span class="sub">${isShifted ? 'load moved' : 'over limit'}</span>
+        </div>
+      </div>`;
     } else {
-      leftHTML += `<div class="rb-person empty"></div>`;
+      lH += `<div class="rb-person empty"></div>`;
     }
 
-    arrowHTML += `<div class="rb-arrow">→</div>`;
+    aH += `<div class="rb-arrow${simMode ? ' active' : ''}">→</div>`;
 
-    if (available[i]) {
-      const p = available[i];
-      const free = CAP - p.allocated;
-      const bw = Math.min((free / 40) * 100, 100);
-      rightHTML += `
-        <div class="rb-person">
-          <div>
-            <div class="rb-name">${p.name}</div>
-            <div class="rb-role">${p.role}</div>
-            <div class="rb-mini-bar free" style="width:${bw}%"></div>
-          </div>
-          <div class="rb-hrs free">${free}h free<span class="sub">can absorb</span></div>
-        </div>`;
+    if (rightList[i]) {
+      const p    = rightList[i];
+      const orig = team.find(t => t.name === p.name);
+      const absorbed = simMode ? p.allocated - orig.allocated : 0;
+      const free     = simMode ? CAP - p.allocated : CAP - p.allocated;
+      const bw       = Math.min((p.allocated / CAP) * 66.6, 100);
+      rH += `<div class="rb-person${simMode ? ' sim-balanced' : ''}">
+        <div>
+          <div class="rb-name">${p.name}</div>
+          <div class="rb-role">${p.role}</div>
+          <div class="rb-mini-bar free" style="width:${bw}%"></div>
+        </div>
+        <div class="rb-hrs ${simMode ? 'balanced' : 'free'}">
+          ${simMode ? '+'+absorbed+'h absorbed' : (CAP - p.allocated)+'h free'}
+          <span class="sub">${simMode ? p.allocated+'h total' : 'can absorb'}</span>
+        </div>
+      </div>`;
     } else {
-      rightHTML += `<div class="rb-person empty"></div>`;
+      rH += `<div class="rb-person empty"></div>`;
     }
   }
 
-  document.getElementById('rbLeft').innerHTML   = leftHTML;
-  document.getElementById('rbArrows').innerHTML = arrowHTML;
-  document.getElementById('rbRight').innerHTML  = rightHTML;
+  document.getElementById('rbLeft').innerHTML   = lH;
+  document.getElementById('rbArrows').innerHTML = aH;
+  document.getElementById('rbRight').innerHTML  = rH;
 }
 
-function renderSituation({ counts }) {
-  const overHrs   = team.filter(p => classify(p.allocated) === 'overloaded').reduce((s,p) => s + (p.allocated - CAP), 0);
-  const underFree = team.filter(p => classify(p.allocated) === 'underused').reduce((s,p)  => s + (CAP - p.allocated), 0);
+function renderSituation(d) {
+  const overHrs   = d.members.filter(p => classify(p.allocated)==='overloaded').reduce((s,p)=>s+(p.allocated-CAP),0);
+  const underFree = d.members.filter(p => classify(p.allocated)==='underused').reduce((s,p)=>s+(CAP-p.allocated),0);
 
-  document.getElementById('sOver').textContent     = counts.overloaded;
-  document.getElementById('sOverSub').textContent  = `${overHrs}h excess load`;
-  document.getElementById('sUnder').textContent    = counts.underused;
+  document.getElementById('sOver').textContent     = d.counts.overloaded;
+  document.getElementById('sOver').className       = `sit-value ${d.counts.overloaded > 0 ? 'red' : 'green'}`;
+  document.getElementById('sOverSub').textContent  = d.counts.overloaded > 0 ? `${overHrs}h excess load` : simMode ? 'after rebalance' : 'no excess';
+  document.getElementById('sUnder').textContent    = d.counts.underused;
   document.getElementById('sUnderSub').textContent = `${underFree}h unused capacity`;
-  document.getElementById('sIdle').textContent     = counts.idle;
-  document.getElementById('sHealthy').textContent  = counts.healthy;
+  document.getElementById('sIdle').textContent     = d.counts.idle;
+  document.getElementById('sHealthy').textContent  = d.counts.healthy;
 }
 
 function renderTable(sortKey) {
-  let sorted = [...team];
+  // Use simulated team data when in sim mode
+  const source = simMode ? buildSimTeam() : team;
+
+  let sorted = [...source];
   if (sortKey === 'util')   sorted.sort((a,b) => b.allocated - a.allocated);
   if (sortKey === 'name')   sorted.sort((a,b) => a.name.localeCompare(b.name));
   if (sortKey === 'status') {
@@ -637,62 +721,85 @@ function renderTable(sortKey) {
   body.innerHTML = '';
 
   sorted.forEach(p => {
-    const s   = classify(p.allocated);
-    const u   = pct(p.allocated);
+    const orig  = team.find(t => t.name === p.name);
+    const s     = classify(p.allocated);
+    const u     = pct(p.allocated);
     const delta = p.allocated - CAP;
-    const bw  = Math.min(u, 150) / 150 * 100;
+    const bw    = Math.min(u, 150) / 150 * 100;
+
+    // Tag logic for sim mode
+    const wasOverloaded  = simMode && classify(orig.allocated) === 'overloaded' && orig.taskType === 'flexible';
+    const absorbedWork   = simMode && p.allocated > orig.allocated;
+    const simTag = wasOverloaded
+      ? `<span style="display:inline-block;font-family:'DM Mono',monospace;font-size:9px;padding:1px 5px;background:var(--green-bg);color:var(--green);border:1px solid var(--green-border);border-radius:2px;margin-left:4px;">rebalanced</span>`
+      : absorbedWork
+        ? `<span style="display:inline-block;font-family:'DM Mono',monospace;font-size:9px;padding:1px 5px;background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border);border-radius:2px;margin-left:4px;">absorbing</span>`
+        : '';
+
+    const rowClass = wasOverloaded ? 'sim-healthy' : absorbedWork ? 'sim-healthy' : s;
 
     const row = document.createElement('div');
-    row.className = `t-row ${s}`;
+    row.className = `t-row ${rowClass}`;
     row.innerHTML = `
       <div>
-        <div class="p-name">${p.name}</div>
-        <div class="p-role">
-          ${p.role}
-          <span class="task-tag ${p.taskType}">${p.taskType === 'critical' ? 'Priority' : 'Flexible'}</span>
-        </div>
+        <div class="p-name">${p.name}${simTag}</div>
+        <div class="p-role">${p.role} <span class="task-tag ${p.taskType}">${p.taskType === 'critical' ? 'Priority' : 'Flexible'}</span></div>
       </div>
       <div class="t-hrs">${p.allocated}h / ${CAP}h</div>
       <div class="t-pct ${s}">${u}%</div>
       <div class="bar-track">
         <div class="bar-fill ${s}" data-w="${bw}" style="width:0%"></div>
       </div>
-      <div class="t-delta ${delta > 0 ? 'over' : delta < 0 ? 'free' : 'exact'}">
-        ${delta > 0 ? '+' : ''}${delta}h
-      </div>
-      <div>
-        <span class="badge ${s}">
-          ${{ overloaded:'Overloaded', healthy:'Healthy', underused:'Under-used', idle:'Idle' }[s]}
-        </span>
-      </div>
+      <div class="t-delta ${delta>0?'over':delta<0?'free':'exact'}">${delta>0?'+':''}${delta}h</div>
+      <div><span class="badge ${s}">${{overloaded:'Overloaded',healthy:'Healthy',underused:'Under-used',idle:'Idle'}[s]}</span></div>
     `;
     body.appendChild(row);
   });
 
   setTimeout(() => {
-    document.querySelectorAll('.bar-fill').forEach(el => {
-      el.style.width = el.dataset.w + '%';
-    });
+    document.querySelectorAll('.bar-fill').forEach(el => { el.style.width = el.dataset.w + '%'; });
   }, 60);
 }
 
+// 3. SIMULATE TOGGLE
+function toggleSim() {
+  simMode = !simMode;
+  const btn  = document.getElementById('simBtn');
+  const desc = document.getElementById('simDesc');
+  btn.textContent  = simMode ? 'Reset View' : 'Simulate Rebalance';
+  btn.className    = simMode ? 'sim-btn on' : 'sim-btn';
+  desc.textContent = simMode
+    ? 'Showing projected utilization after flexible tasks are redistributed'
+    : 'See what utilization looks like if all flexible tasks are redistributed from overloaded members';
+
+  const d = activeData();
+  renderSprintRisk(d);
+  renderDecision(d);
+  renderRebalance(d);
+  renderSituation(d);
+  renderTable(currentSort);
+}
+
+let currentSort = 'util';
+
 function sortBy(key, btn) {
+  currentSort = key;
   document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderTable(key);
 }
 
-// FIX 1: Wrap in DOMContentLoaded so JS never runs before the DOM exists
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('ts').textContent = new Date().toLocaleString('en-IN', {
     weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
     hour: '2-digit', minute: '2-digit'
   });
 
-  const data = compute();
-  renderDecision(data);
-  renderRebalance(data);
-  renderSituation(data);
+  const d = compute();
+  renderSprintRisk(d);
+  renderDecision(d);
+  renderRebalance(d);
+  renderSituation(d);
   renderTable('util');
 });
 </script>
